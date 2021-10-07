@@ -7,10 +7,6 @@ import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import java.net.URI;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
-import java.util.Optional;
 
 @Component
 @RequiredArgsConstructor
@@ -26,16 +22,21 @@ public class ClientSending {
     private String informationToken;
 
 
-    public DataTransferDto getInformation(){
+    public ReceivingDto getInformations(){
         URI url = UriComponentsBuilder.fromHttpUrl(informationApiEndpoint)
-                .queryParam("", informationAppKey)
-                .queryParam("", informationToken)
+                .queryParam("key", informationAppKey)
+                .queryParam("token", informationToken)
+                .queryParam("fields", "name,id")
+//                .queryParam("lists", "all")
+//                .queryParam("", informationAppKey)
+//                .queryParam("", informationToken)
                 .build()
                 .encode()
                 .toUri();
-        DataTransferDto information = restTemplate.getForObject(url, DataTransferDto.class);
 
-        return information;
+        ReceivingDto informationBoard = restTemplate.getForObject(url, ReceivingDto.class);
+
+        return informationBoard;
 
     }
 }

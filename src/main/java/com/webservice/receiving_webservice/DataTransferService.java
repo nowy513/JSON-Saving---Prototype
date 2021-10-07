@@ -12,7 +12,7 @@ public class DataTransferService {
 
     private DataTransferRepository dataTransferRepository;
 
-    public List<DataTransfer> getAllTransfers()e{
+    public List<DataTransfer> getAllTransfers(){
         return dataTransferRepository.findAll();
     }
 
@@ -24,7 +24,7 @@ public class DataTransferService {
         return dataTransferRepository.save(dataTransfer);
     }
 
-    public void deleteTransfer(final Long id){
-        dataTransferRepository.deleteById(id);
+    public void deleteTransfer(){
+        dataTransferRepository.deleteAll();
     }
 }

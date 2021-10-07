@@ -8,16 +8,16 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 
 @Data
-@NoArgsConstructor
-@AllArgsConstructor
 @Entity(name = "DATA_TRANSFER")
+@AllArgsConstructor
+@NoArgsConstructor
 public class DataTransfer {
 
     @Id
     @NotNull
     @Column(name = "ID")
-    private Long id;
+    private String id;
 
     @Column(name = "INFORMATION")
-    private String information;
+    private String name;
 }

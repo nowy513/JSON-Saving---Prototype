@@ -18,6 +18,8 @@ public class DataTransferController {
     @Autowired
     private DataTransferMapper dataTransferMapper;
 
+    private final ClientSending clientSending;
+
 
     @GetMapping("/all")
     public List<DataTransferDto> getInformation(){
@@ -30,12 +32,18 @@ public class DataTransferController {
     }
 
     @PostMapping("/create")
-    public DataTransferDto createInformation(@RequestBody DataTransferDto dataTransferDto){
-        return dataTransferMapper.mapToTransferDto(dataTransferService.saveTransfer(dataTransferMapper.mapToTransfer(dataTransferDto)));
+    public DataTransfer createInformation(@RequestBody ReceivingDto reveivingDto){
+        return dataTransferService.saveTransfer(dataTransferMapper.mapToDataTransfer(reveivingDto));
     }
 
-    @DeleteMapping("/{id}")
-    public void deteleInformation(@PathVariable Long id){
-        dataTransferService.deleteTransfer(id);
+    @GetMapping
+    public ReceivingDto getInformationsBoard(){
+        ReceivingDto receiving = clientSending.getInformations();
+        return receiving;
+    }
+
+    @DeleteMapping
+    public void deteleInformation(){
+        dataTransferService.deleteTransfer();
     }
 }

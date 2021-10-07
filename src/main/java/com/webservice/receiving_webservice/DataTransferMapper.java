@@ -8,23 +8,20 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-@AllArgsConstructor
-@NoArgsConstructor
 public class DataTransferMapper {
 
-    private ClientSending clientSending;
 
     public DataTransfer mapToTransfer(final DataTransferDto dataTransferDto){
         return new DataTransfer(
                 dataTransferDto.getId(),
-                dataTransferDto.getInformation()
+                dataTransferDto.getName()
         );
     }
 
     public DataTransferDto mapToTransferDto(final DataTransfer dataTransfer){
         return new DataTransferDto(
-                clientSending.getInformation().getId(),
-                clientSending.getInformation().getInformation()
+                dataTransfer.getId(),
+                dataTransfer.getName()
         );
     }
 
@@ -32,5 +29,19 @@ public class DataTransferMapper {
         return transfers.stream()
                 .map(this::mapToTransferDto)
                 .collect(Collectors.toList());
+    }
+
+    public DataTransfer mapToDataTransfer(final ReceivingDto receivingDto){
+        return new DataTransfer(
+                receivingDto.getId(),
+                receivingDto.getName()
+        );
+    }
+
+    public ReceivingDto mapToReveiving(final DataTransfer dataTransfer){
+        return new ReceivingDto(
+                dataTransfer.getId(),
+                dataTransfer.getName()
+        );
     }
 }
