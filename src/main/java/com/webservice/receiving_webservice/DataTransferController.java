@@ -22,25 +22,25 @@ public class DataTransferController {
 
 
     @GetMapping("/all")
-    public List<DataTransferDto> getInformation(){
+    public List<DataTransferDto> getDataBase(){
         return dataTransferMapper.mapToTransferListDto(dataTransferService.getAllTransfers());
     }
 
-    @GetMapping("/{id}")
-    public DataTransferDto getInformation(@PathVariable Long id) throws Exception{
-        return dataTransferMapper.mapToTransferDto(dataTransferService.getTransfer(id).orElseThrow(Exception::new));
-    }
-
-    @PostMapping("/create")
-    public DataTransfer createInformation(@RequestBody ReceivingDto reveivingDto){
-        return dataTransferService.saveTransfer(dataTransferMapper.mapToDataTransfer(reveivingDto));
-    }
-
     @GetMapping
-    public ReceivingDto getInformationsBoard(){
-        ReceivingDto receiving = clientSending.getInformations();
-        return receiving;
+    public DataTransfer getSaveInformation(@RequestBody ReceivingDto receivingDto){
+        return dataTransferService.saveTransfer(dataTransferMapper.mapToDataTransfer(receivingDto));
     }
+
+//    @GetMapping("/{id}")
+//    public DataTransferDto getInformation(@PathVariable Long id) throws Exception{
+//        return dataTransferMapper.mapToTransferDto(dataTransferService.getTransfer(id).orElseThrow(Exception::new));
+//    }
+
+    @GetMapping("/ReceivedInformation")
+    public ReceivingDto getReceivedInformation(){
+        return clientSending.getInformations();
+    }
+
 
     @DeleteMapping
     public void deteleInformation(){

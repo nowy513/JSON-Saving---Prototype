@@ -11,6 +11,7 @@ import javax.persistence.Id;
 @Entity(name = "DATA_TRANSFER")
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 public class DataTransfer {
 
     @Id
