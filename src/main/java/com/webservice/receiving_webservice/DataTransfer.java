@@ -17,8 +17,8 @@ public class DataTransfer {
     @Id
     @NotNull
     @Column(name = "ID")
-    private String id;
+    private Long id;
 
     @Column(name = "INFORMATION")
-    private String name;
+    private String information;
 }

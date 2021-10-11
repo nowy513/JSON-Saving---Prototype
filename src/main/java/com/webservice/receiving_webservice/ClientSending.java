@@ -7,6 +7,8 @@ import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import java.net.URI;
+import java.util.Collections;
+import java.util.List;
 
 @Component
 @RequiredArgsConstructor
@@ -14,19 +16,19 @@ public class ClientSending {
 
     private final RestTemplate restTemplate;
 
-    @Value("${.api.endpoint.prod}")
-    private String informationApiEndpoint;
-    @Value("${.app.key}")
-    private String informationAppKey;
-    @Value("${.app.token}")
-    private String informationToken;
+//    @Value("${.api.endpoint.prod}")
+//    private String informationApiEndpoint = "http://localhost:8080/";
+//    @Value("${.app.key}")
+//    private String informationAppKey;
+//    @Value("${.app.token}")
+//    private String informationToken;
 
 
     public ReceivingDto getInformations(){
-        URI url = UriComponentsBuilder.fromHttpUrl(informationApiEndpoint)
-                .queryParam("key", informationAppKey)
-                .queryParam("token", informationToken)
-                .queryParam("fields", "name,id")
+        URI url = UriComponentsBuilder.fromHttpUrl("http://localhost:8090/")
+//                .queryParam("key", informationAppKey)
+//                .queryParam("token", informationToken)
+//                .queryParam("fields", "information,id")
 //                .queryParam("lists", "all")
 //                .queryParam("", informationAppKey)
 //                .queryParam("", informationToken)

@@ -18,32 +18,36 @@ public class DataTransferController {
     @Autowired
     private DataTransferMapper dataTransferMapper;
 
-    private final ClientSending clientSending;
 
-
-    @GetMapping("/all")
-    public List<DataTransferDto> getDataBase(){
-        return dataTransferMapper.mapToTransferListDto(dataTransferService.getAllTransfers());
+    @GetMapping("/allDatabase")
+    public List<DataTransferDto> getDatabase(){
+        return dataTransferMapper.mapToTransferListDto(dataTransferService.getAllDatabase());
     }
 
-    @GetMapping
-    public DataTransfer getSaveInformation(@RequestBody ReceivingDto receivingDto){
-        return dataTransferService.saveTransfer(dataTransferMapper.mapToDataTransfer(receivingDto));
-    }
-
-//    @GetMapping("/{id}")
-//    public DataTransferDto getInformation(@PathVariable Long id) throws Exception{
-//        return dataTransferMapper.mapToTransferDto(dataTransferService.getTransfer(id).orElseThrow(Exception::new));
-//    }
-
-    @GetMapping("/ReceivedInformation")
-    public ReceivingDto getReceivedInformation(){
-        return clientSending.getInformations();
+    @GetMapping("/saveInformation")
+    public DataTransfer savingTheInformationSent(@RequestBody ReceivingDto receivingDto){
+        return dataTransferService.saveInformation(dataTransferMapper.mapToDataTransfer(receivingDto));
     }
 
 
-    @DeleteMapping
-    public void deteleInformation(){
-        dataTransferService.deleteTransfer();
+    @GetMapping("/{id}")
+    public DataTransferDto lookingForInformationInTheDataBase(@PathVariable Long id) throws Exception{
+        return dataTransferMapper.mapToTransferDto(dataTransferService.getTransfer(id).orElseThrow(Exception::new));
+    }
+
+    @PostMapping("/createInformation")
+    public DataTransfer saveTheCreatingInformation(@RequestBody DataTransferDto dataTransferDto){
+        return dataTransferService.saveInformation(dataTransferMapper.mapToTransfer(dataTransferDto));
+    }
+
+    @DeleteMapping("/{id}")
+    public void deteleInformationInTheDatabase(@PathVariable Long id){
+        dataTransferService.deleteInformation(id);
+    }
+
+
+    @DeleteMapping("/clearingTheDatabase")
+    public void clearingTheDatabase(){
+        dataTransferService.clearingTheDatabase();
     }
 }

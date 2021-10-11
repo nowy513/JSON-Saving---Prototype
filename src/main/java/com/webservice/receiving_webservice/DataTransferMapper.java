@@ -11,17 +11,17 @@ import java.util.stream.Collectors;
 public class DataTransferMapper {
 
 
-//    public DataTransfer mapToTransfer(final DataTransferDto dataTransferDto){
-//        return new DataTransfer(
-//                dataTransferDto.getId(),
-//                dataTransferDto.getName()
-//        );
-//    }
+    public DataTransfer mapToTransfer(final DataTransferDto dataTransferDto){
+        return new DataTransfer(
+                dataTransferDto.getId(),
+                dataTransferDto.getInformation()
+        );
+    }
 
     public DataTransferDto mapToTransferDto(final DataTransfer dataTransfer){
         return new DataTransferDto(
                 dataTransfer.getId(),
-                dataTransfer.getName()
+                dataTransfer.getInformation()
         );
     }
 
@@ -34,7 +34,7 @@ public class DataTransferMapper {
     public DataTransfer mapToDataTransfer(final ReceivingDto receivingDto){
         return new DataTransfer(
                 receivingDto.getId(),
-                receivingDto.getName()
+                receivingDto.getInformation()
         );
     }
 }

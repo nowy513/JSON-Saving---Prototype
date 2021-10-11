@@ -10,9 +10,9 @@ import java.util.Optional;
 @AllArgsConstructor
 public class DataTransferService {
 
-    private DataTransferRepository dataTransferRepository;
+    private final DataTransferRepository dataTransferRepository;
 
-    public List<DataTransfer> getAllTransfers(){
+    public List<DataTransfer> getAllDatabase(){
         return dataTransferRepository.findAll();
     }
 
@@ -20,11 +20,15 @@ public class DataTransferService {
         return dataTransferRepository.findById(id);
     }
 
-    public DataTransfer saveTransfer(final DataTransfer dataTransfer){
+    public DataTransfer saveInformation(final DataTransfer dataTransfer){
         return dataTransferRepository.save(dataTransfer);
     }
 
-    public void deleteTransfer(){
+    public void deleteInformation(Long id){
+        dataTransferRepository.deleteById(id);
+    }
+
+    public void clearingTheDatabase(){
         dataTransferRepository.deleteAll();
     }
 }
