@@ -9,6 +9,7 @@ import java.util.List;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 @Data
+@AllArgsConstructor
 public class ReceivingDto {
 
     @JsonProperty("id")
