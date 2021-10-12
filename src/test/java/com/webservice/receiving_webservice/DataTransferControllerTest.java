@@ -1,6 +1,12 @@
 package com.webservice.receiving_webservice;
 
 import com.google.gson.Gson;
+import com.webservice.receiving_webservice.client.ClientSending;
+import com.webservice.receiving_webservice.controller.DataTransferController;
+import com.webservice.receiving_webservice.domain.DataTransfer;
+import com.webservice.receiving_webservice.domain.DataTransferDto;
+import com.webservice.receiving_webservice.mapper.DataTransferMapper;
+import com.webservice.receiving_webservice.service.DataTransferService;
 import org.hamcrest.Matchers;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +32,9 @@ public class DataTransferControllerTest {
 
     @MockBean
     DataTransferService dataTransferService;
+
+    @MockBean
+    ClientSending clientSending;
 
     @Autowired
     private MockMvc mockMvc;
@@ -142,7 +151,7 @@ public class DataTransferControllerTest {
 //        When & Then
         mockMvc
                 .perform(MockMvcRequestBuilders
-                .delete("/clearingTheDataBase")
+                .delete("/clearingTheDatabase")
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.status().is(200));
     }

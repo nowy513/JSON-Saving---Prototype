@@ -1,7 +1,8 @@
-package com.webservice.receiving_webservice;
+package com.webservice.receiving_webservice.mapper;
 
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
+import com.webservice.receiving_webservice.client.ClientSending;
+import com.webservice.receiving_webservice.domain.DataTransfer;
+import com.webservice.receiving_webservice.domain.DataTransferDto;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -9,7 +10,6 @@ import java.util.stream.Collectors;
 
 @Service
 public class DataTransferMapper {
-
 
     public DataTransfer mapToTransfer(final DataTransferDto dataTransferDto){
         return new DataTransfer(
@@ -31,10 +31,10 @@ public class DataTransferMapper {
                 .collect(Collectors.toList());
     }
 
-    public DataTransfer mapToDataTransfer(final ReceivingDto receivingDto){
+    public DataTransfer mapToDataTransfer(ClientSending clientSending){
         return new DataTransfer(
-                receivingDto.getId(),
-                receivingDto.getInformation()
+                clientSending.getReceivingDto().getId(),
+                clientSending.getReceivingDto().getInformation()
         );
     }
 }

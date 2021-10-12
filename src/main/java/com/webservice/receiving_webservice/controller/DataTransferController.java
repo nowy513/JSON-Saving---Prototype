@@ -1,6 +1,11 @@
-package com.webservice.receiving_webservice;
+package com.webservice.receiving_webservice.controller;
 
-import lombok.RequiredArgsConstructor;
+import com.webservice.receiving_webservice.client.ClientSending;
+import com.webservice.receiving_webservice.domain.DataTransfer;
+import com.webservice.receiving_webservice.domain.DataTransferDto;
+import com.webservice.receiving_webservice.domain.ReceivingDto;
+import com.webservice.receiving_webservice.mapper.DataTransferMapper;
+import com.webservice.receiving_webservice.service.DataTransferService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -9,7 +14,6 @@ import java.util.List;
 
 @CrossOrigin("*")
 @RestController
-@RequiredArgsConstructor
 public class DataTransferController {
 
     @Autowired
@@ -18,6 +22,10 @@ public class DataTransferController {
     @Autowired
     private DataTransferMapper dataTransferMapper;
 
+    @Autowired
+    private ClientSending clientSending;
+
+
 
     @GetMapping("/allDatabase")
     public List<DataTransferDto> getDatabase(){
@@ -25,10 +33,14 @@ public class DataTransferController {
     }
 
     @GetMapping("/saveInformation")
-    public DataTransfer savingTheInformationSent(@RequestBody ReceivingDto receivingDto){
-        return dataTransferService.saveInformation(dataTransferMapper.mapToDataTransfer(receivingDto));
+    public DataTransfer savingTheInformationSent(){
+        return dataTransferService.saveInformation(dataTransferMapper.mapToDataTransfer(clientSending));
     }
 
+    @GetMapping("/receivedInformation")
+    public ReceivingDto getReceivedInformation(){
+        return clientSending.getReceivingDto();
+    }
 
     @GetMapping("/{id}")
     public DataTransferDto lookingForInformationInTheDataBase(@PathVariable Long id) throws Exception{
@@ -50,4 +62,5 @@ public class DataTransferController {
     public void clearingTheDatabase(){
         dataTransferService.clearingTheDatabase();
     }
+
 }

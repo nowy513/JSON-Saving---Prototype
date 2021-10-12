@@ -1,25 +1,21 @@
-package com.webservice.receiving_webservice;
+package com.webservice.receiving_webservice.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.util.List;
 
-
-@JsonIgnoreProperties(ignoreUnknown = true)
-@Getter
+@Data
 @AllArgsConstructor
-@NoArgsConstructor
-public class ReceivingDto {
+@JsonIgnoreProperties(ignoreUnknown = true)
+public class DataTransferDto {
 
     @JsonProperty("id")
     private Long id;
 
     @JsonProperty("information")
     private String information;
+
 
 }

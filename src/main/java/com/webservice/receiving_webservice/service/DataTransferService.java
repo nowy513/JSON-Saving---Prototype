@@ -1,5 +1,7 @@
-package com.webservice.receiving_webservice;
+package com.webservice.receiving_webservice.service;
 
+import com.webservice.receiving_webservice.repository.DataTransferRepository;
+import com.webservice.receiving_webservice.domain.DataTransfer;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 

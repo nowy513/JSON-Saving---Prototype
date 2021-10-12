@@ -1,4 +1,4 @@
-package com.webservice.receiving_webservice;
+package com.webservice.receiving_webservice.domain;
 
 import com.sun.istack.NotNull;
 import lombok.*;

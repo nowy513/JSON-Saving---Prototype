@@ -1,5 +1,6 @@
-package com.webservice.receiving_webservice;
+package com.webservice.receiving_webservice.repository;
 
+import com.webservice.receiving_webservice.domain.DataTransfer;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

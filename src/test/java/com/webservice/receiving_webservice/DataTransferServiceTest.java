@@ -1,5 +1,8 @@
 package com.webservice.receiving_webservice;
 
+import com.webservice.receiving_webservice.domain.DataTransfer;
+import com.webservice.receiving_webservice.repository.DataTransferRepository;
+import com.webservice.receiving_webservice.service.DataTransferService;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
