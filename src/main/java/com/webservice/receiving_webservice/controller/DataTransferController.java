@@ -6,6 +6,8 @@ import com.webservice.receiving_webservice.domain.DataTransferDto;
 import com.webservice.receiving_webservice.domain.ReceivingDto;
 import com.webservice.receiving_webservice.mapper.DataTransferMapper;
 import com.webservice.receiving_webservice.service.DataTransferService;
+import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,16 +16,15 @@ import java.util.List;
 
 @CrossOrigin("*")
 @RestController
+@AllArgsConstructor
 public class DataTransferController {
 
-    @Autowired
-    private DataTransferService dataTransferService;
 
-    @Autowired
-    private DataTransferMapper dataTransferMapper;
+    private final DataTransferService dataTransferService;
 
-    @Autowired
-    private ClientSending clientSending;
+    private final DataTransferMapper dataTransferMapper;
+
+    private final ClientSending clientSending;
 
 
 
